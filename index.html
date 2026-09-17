@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flux Dev Image Generator - AI Powered</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Custom CSS -->
+   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <h1 class="app-title">
+                <i class="fas fa-wand-magic-sparkles"></i> Flux Dev Generator
+            </h1>
+            <p class="app-subtitle">Transform your imagination into stunning AI-generated images</p>
+        </header>
+
+        <!-- Form Section -->
+        <section class="form-section">
+            <div class="form-group">
+                <label for="prompt" class="form-label">
+                    <i class="fas fa-pencil-alt"></i> Your Creative Prompt
+                </label>
+                <textarea 
+                    id="prompt" 
+                    class="form-textarea" 
+                    placeholder="Describe the image you want to create... Be creative and detailed! ✨&#10;&#10;Example: A futuristic cityscape at sunset with flying cars, neon lights reflecting on wet streets, cyberpunk style, highly detailed, 8k quality"
+                    rows="5"
+                ></textarea>
+            </div>
+
+            <!-- Advanced Options -->
+            <div class="options-grid">
+                <div class="option-item">
+                    <label for="width" class="form-label">
+                        <i class="fas fa-arrows-left-right"></i> Width
+                    </label>
+                    <input 
+                        type="number" 
+                        id="width" 
+                        class="form-input" 
+                        value="1024" 
+                        min="256" 
+                        max="2048" 
+                        step="64"
+                    >
+                </div>
+                <div class="option-item">
+                    <label for="height" class="form-label">
+                        <i class="fas fa-arrows-up-down"></i> Height
+                    </label>
+                    <input 
+                        type="number" 
+                        id="height" 
+                        class="form-input" 
+                        value="1024" 
+                        min="256" 
+                        max="2048" 
+                        step="64"
+                    >
+                </div>
+                <div class="option-item">
+                    <label for="steps" class="form-label">
+                        <i class="fas fa-layer-group"></i> Steps
+                    </label>
+                    <input 
+                        type="number" 
+                        id="steps" 
+                        class="form-input" 
+                        value="28" 
+                        min="1" 
+                        max="50"
+                    >
+                </div>
+            </div>
+
+            <!-- Generate Button -->
+            <button id="generateBtn" class="btn-generate">
+                <i class="fas fa-sparkles"></i> Generate Image
+            </button>
+
+            <!-- Alert Box -->
+            <div id="alert" class="alert"></div>
+        </section>
+
+        <!-- Result Section -->
+        <section id="resultSection" class="result-section">
+            <!-- Loading State -->
+            <div id="loadingContainer" class="loading-container">
+                <div class="spinner"></div>
+                <p class="loading-text">
+                    <i class="fas fa-magic"></i> Creating your masterpiece...
+                </p>
+            </div>
+
+            <!-- Image Display -->
+            <div id="imageContainer" class="hidden">
+                <div class="image-wrapper">
+                    <img id="generatedImage" class="generated-image" alt="AI Generated Image">
+                    <div class="image-actions">
+                        <button id="downloadBtn" class="btn-secondary">
+                            <i class="fas fa-download"></i> Download
+                        </button>
+                        <button class="btn-secondary" onclick="location.reload()">
+                            <i class="fas fa-refresh"></i> Generate New
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Custom JavaScript -->
+   <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
